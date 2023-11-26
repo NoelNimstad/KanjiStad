@@ -117,12 +117,20 @@ h1
 
 .slider
 {
-    width: 100%;
+    width: 90%;
     background-color: white;
 }
 
 h3 
 {
     margin-top: -1.5rem;
+    color: gray;
+}
+
+.footnote
+{
+    position: absolute;
+    bottom: 0;
+    font-size: 0.8rem;
     color: gray;
 }

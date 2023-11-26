@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <meta name="viewport" content="width=device-width, initial-scale=0.7"/>
+        
         <title>漢字スタッド</title>
         <script src="vocabulary.js"></script>
         <link rel="stylesheet" href="styles.css"/>
@@ -8,6 +10,8 @@
         <script src="kanjiCanvas.js" defer></script>
         <script src="referencePatterns.js" defer></script>
         <script src="script.js" defer></script>
+
+        <link rel="manifest" href="manifest.json">
     </head>
     <body>
         <main id="main">
@@ -24,6 +28,7 @@
                     <button id="next" class="tools 次" style="color: lightgray;">次</button>
                 </section>
             </section>
+            <p id="score" class="score">0/0</p>
         </main>
         <section class="range" id="config">
             <div class="wrapper">
@@ -34,10 +39,9 @@
                 <p id="level">10つのワニカニのレベル</p>
                 <button id="start" class="start">始める</button>
             </div>
+            <section class="footnote">
+                <p><a href="http://github.com/asdfjkl/kanjicanvas">Kanji Canvas kanji drawing & recognition system by Dominik Klein</a>・<a href="http://kanjivg.tagaini.net/">KanjiVG kanji SVGs by Ulrich Apel</a></p>
+            </section>
         </section>
-        <p id="score" class="score">0/0</p>
-        <!--<section class="footnote">
-            <p>KanjiStad is an opensource kanji writing learning platform based on the open source project KanjiCanvas & the kanji learning platform WaniKani and their level system specifically</p>
-        </section>-->
     </body>
 </html>

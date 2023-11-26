@@ -1,0 +1,8 @@
+{
+    "name": "漢字スタッド",
+    "short_name": "漢字スタッド",
+    "start_url": ".",
+    "background_color": "#fff",
+    "theme_color": "#fff",
+    "display": "standalone"
+}
