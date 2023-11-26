@@ -74,6 +74,8 @@ const correctDiagram = document.getElementById("correctDiagram");
 const correctButton = document.getElementById("correct");
 correctButton.addEventListener("click", () => 
 {
+    if(canContinute) return;
+
     const results = KanjiCanvas.recognize("canvas");
     correctDiagram.style.display = "block";
 
