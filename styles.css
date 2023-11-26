@@ -24,11 +24,15 @@ canvas
 .canvas 
 {
     display: flex;
+    justify-content: center;
 }
 
 .buttons 
 {
     padding: 0.5rem 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
 }
 
 .tools
@@ -39,6 +43,7 @@ canvas
     font-size: 1.3rem;
     cursor: pointer;
     border: none;
+    text-align: left;
 }
 
 .range 
@@ -65,4 +70,11 @@ canvas
     background: none;
     font-size: 1.3rem;
     cursor: pointer;
+}
+
+.score 
+{
+    position: absolute;
+    bottom: 1rem;
+    right: 2rem;
 }

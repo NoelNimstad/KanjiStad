@@ -11,11 +11,14 @@
     </head>
     <body>
         <main>
-            <p class="prompt">プロンプト</p>
+            <p id="prompt" class="prompt">プロンプト</p>
             <section class="canvas">
                 <canvas id="canvas" width="256" height="256"></canvas>
                 <section class="buttons">
-                    <button class="tools 正">正す</button>
+                    <button id="correct" class="tools 正">正す</button>
+                    <button id="undo" class="tools 開">開く</button>
+                    <button id="restart" class="tools やり直す">やり直す</button>
+                    <button id="next" class="tools 次">次</button>
                 </section>
             </section>
         </main>
@@ -24,5 +27,6 @@
             <p id="level">・10ヶレベル</p>
             <button id="start" class="start">始める</button>
         </section>
+        <p id="score" class="score">0/0</p>
     </body>
 </html>
