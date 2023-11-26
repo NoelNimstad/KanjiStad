@@ -130,7 +130,7 @@ h3
 .footnote
 {
     position: absolute;
-    bottom: 0;
+    bottom: 2rem;
     font-size: 0.8rem;
     color: gray;
 }
