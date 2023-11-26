@@ -2,19 +2,27 @@
 <html>
     <head>
         <title>漢字スタッド</title>
+        <script src="vocabulary.js"></script>
+        <link rel="stylesheet" href="styles.css"/>
+
         <script src="kanjiCanvas.js" defer></script>
         <script src="referencePatterns.js" defer></script>
         <script src="script.js" defer></script>
-        <link rel="stylesheet" href="styles.css"/>
     </head>
     <body>
         <main>
+            <p class="prompt">プロンプト</p>
             <section class="canvas">
                 <canvas id="canvas" width="256" height="256"></canvas>
                 <section class="buttons">
-                    <button class="tools 正">正</button>
+                    <button class="tools 正">正す</button>
                 </section>
             </section>
         </main>
+        <section class="range">
+            <input id="range" type="range" name="levels" min="1" max="60" step="1">
+            <p id="level">・10ヶレベル</p>
+            <button id="start" class="start">始める</button>
+        </section>
     </body>
 </html>
