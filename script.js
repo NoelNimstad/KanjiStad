@@ -36,6 +36,7 @@ const promptLabel = document.getElementById("prompt");
 async function Prompt()
 {
     correctBool = false;
+    promptLabel.style.color = "black";
 
     KanjiCanvas.erase("canvas");
     currentItem = filteredVocabulary[Math.floor(Math.random() * filteredVocabulary.length)];
@@ -87,6 +88,10 @@ correctButton.addEventListener("click", () =>
     if(results.includes(currentCharacter))
     {
         correct++;
+        promptLabel.style.color = "green";
+    } else 
+    {
+        promptLabel.style.color = "red";
     }
 
     scoreLabel.innerHTML = `${ correct }/${ total } : ${ Math.round(correct / total * 100) }%`;
