@@ -12,7 +12,7 @@ body
 
 * 
 {
-    font-family: 'Noto Serif JP', serif !important;
+    font-family: 'Noto Serif JP', serif;
 }
 
 canvas 
@@ -27,33 +27,38 @@ canvas
     justify-content: center;
 }
 
+.canvas > div 
+{
+    position: relative;
+}
+
 .buttons 
 {
-    padding: 0.5rem 1rem;
     display: flex;
+    padding: 1rem;
     flex-direction: column;
     gap: 0.5rem;
 }
 
 .tools
 {
-    background: none;
     color: black;
     font-weight: bolder;
     font-size: 1.3rem;
     cursor: pointer;
     border: none;
     text-align: left;
+    background: none;
 }
 
 .range 
 {
-    position: absolute;
-    bottom: 1rem;
     width: 100vw;
+    height: 100vh;
     display: flex;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
+    text-align: center;
 }
 
 .prompt 
@@ -67,9 +72,10 @@ canvas
     margin-left: 1rem;
     background-color: none;
     border: none;
-    background: none;
     font-size: 1.3rem;
     cursor: pointer;
+    background: none;
+    border-bottom: 1px solid black;
 }
 
 .score 
@@ -77,4 +83,46 @@ canvas
     position: absolute;
     bottom: 1rem;
     right: 2rem;
+}
+
+.correctDiagram
+{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 256px;
+    height: 256px;
+    opacity: 0.1;
+    user-select: none;
+    z-index: -10000;
+}
+
+.correctDiagram > svg 
+{
+    width: 100%;
+    height: 100%;
+}
+
+main 
+{
+    display: none;
+}
+
+h1 
+{
+    color: white;
+    font-size: 2rem;
+    color: #00a1fa;
+}
+
+.slider
+{
+    width: 100%;
+    background-color: white;
+}
+
+h3 
+{
+    margin-top: -1.5rem;
+    color: gray;
 }

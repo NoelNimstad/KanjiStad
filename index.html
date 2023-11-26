@@ -10,23 +10,34 @@
         <script src="script.js" defer></script>
     </head>
     <body>
-        <main>
+        <main id="main">
             <p id="prompt" class="prompt">プロンプト</p>
             <section class="canvas">
-                <canvas id="canvas" width="256" height="256"></canvas>
+                <div>
+                    <canvas id="canvas" width="256" height="256"></canvas>
+                    <div class="correctDiagram" id="correctDiagram" width="256" height="256"></div>
+                </div>
                 <section class="buttons">
                     <button id="correct" class="tools 正">正す</button>
                     <button id="undo" class="tools 開">開く</button>
                     <button id="restart" class="tools やり直す">やり直す</button>
-                    <button id="next" class="tools 次">次</button>
+                    <button id="next" class="tools 次" style="color: lightgray;">次</button>
                 </section>
             </section>
         </main>
-        <section class="range">
-            <input id="range" type="range" name="levels" min="1" max="60" step="1">
-            <p id="level">・10ヶレベル</p>
-            <button id="start" class="start">始める</button>
+        <section class="range" id="config">
+            <div class="wrapper">
+                <h2>漢字スタッド</h2>
+                <h3>ノエル・ニムスタッド</h3>
+                <h1>WaniKani®のレベルを決めます</h1>
+                <input class="slider" id="range" type="range" name="levels" min="1" max="60" step="1" value="10">
+                <p id="level">10つのワニカニのレベル</p>
+                <button id="start" class="start">始める</button>
+            </div>
         </section>
         <p id="score" class="score">0/0</p>
+        <!--<section class="footnote">
+            <p>KanjiStad is an opensource kanji writing learning platform based on the open source project KanjiCanvas & the kanji learning platform WaniKani and their level system specifically</p>
+        </section>-->
     </body>
 </html>
