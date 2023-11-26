@@ -1,0 +1,1 @@
+KanjiCanvas.init("canvas");
