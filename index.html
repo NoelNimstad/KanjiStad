@@ -1,3 +1,7 @@
+<!-- 
+    Noel Nimstad
+    2023/11/26 : 2023/11/27
+-->
 <!DOCTYPE html>
 <html>
     <head>
@@ -12,13 +16,15 @@
         <script src="script.js" defer></script>
 
         <link rel="manifest" href="manifest.json">
+
+        <script src="confetti.js" defer></script>
     </head>
     <body>
         <main id="main">
             <p id="prompt" class="prompt">プロンプト</p>
             <section class="canvas">
                 <div>
-                    <canvas id="canvas" width="256" height="256"></canvas>
+                    <canvas class="box" id="canvas" width="256" height="256"></canvas>
                     <div class="correctDiagram" id="correctDiagram" width="256" height="256"></div>
                 </div>
                 <section class="buttons">
@@ -43,6 +49,7 @@
                 <p><a href="https://www.paypal.com/donate/?hosted_button_id=SVTBMLVQAW8X6">Fund me a trip to Japan</a></p>
                 <p><a href="http://github.com/asdfjkl/kanjicanvas">Kanji Canvas kanji drawing & recognition system by Dominik Klein</a>・<a href="http://kanjivg.tagaini.net/">KanjiVG kanji SVGs by Ulrich Apel</a></p>
             </section>
+            <p class="score">v1.1.0</p>
         </section>
     </body>
 </html>

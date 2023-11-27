@@ -1,4 +1,8 @@
-// SCORE
+/*
+    Noel Nimstad
+    2023/11/26 : 2023/11/27
+*/
+
 let correct = 0;
 let total = 0;
 let canContinute = false;
@@ -28,6 +32,17 @@ startButton.addEventListener("click", () =>
     configMenu.style.display = "none";
     mainMenu.style.display = "block";
     filteredVocabulary = vocabulary.filter(item => item.level <= levels);
+
+    let i = filteredVocabulary.length, index;
+    while(i > 0)
+    {
+        index = Math.floor(Math.random() * i);
+        i--;
+
+        [filteredVocabulary[i], filteredVocabulary[index]] = 
+        [filteredVocabulary[index], filteredVocabulary[i]];
+    }
+
     Prompt();
 });
 
@@ -46,7 +61,7 @@ async function Prompt()
     currentCharacter = currentCharacter[Math.floor(Math.random() * currentCharacter.length)]
 
     prompt = prompt.replace(currentCharacter, "○");
-    promptLabel.innerHTML = prompt + "《" + currentItem.kana + "》<br/>" + currentItem.meaning;
+    promptLabel.innerHTML = "<span class=\"font\">" + prompt + "《" + currentItem.kana + "》</span><br/>" + currentItem.meaning;
 
     let svg;
     await fetch(`https://kanjivg.tagaini.net/kanjivg/kanji/${ currentCharacter.charCodeAt(0).toString(16).padStart(5, "0") }.svg`)
@@ -81,7 +96,7 @@ correctButton.addEventListener("click", () =>
     correctDiagram.style.display = "block";
 
     prompt = prompt.replace("○", currentCharacter);
-    promptLabel.innerHTML = prompt + "《" + currentItem.kana + "》<br/>" + currentItem.meaning;
+    promptLabel.innerHTML = "<span class=\"font\">" + prompt + "《" + currentItem.kana + "》</span><br/>" + currentItem.meaning;
 
     total++;
 
@@ -89,6 +104,7 @@ correctButton.addEventListener("click", () =>
     {
         correct++;
         promptLabel.style.color = "green";
+        Yipee();
     } else 
     {
         promptLabel.style.color = "red";
