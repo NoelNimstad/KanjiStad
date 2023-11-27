@@ -114,6 +114,7 @@ correctButton.addEventListener("click", () =>
 
     canContinute = true;
     nextButton.style.color = "black";
+    correctButton.style.color = "lightgray";
 });
 
 const nextButton = document.getElementById("next");
@@ -121,6 +122,7 @@ nextButton.addEventListener("click", () =>
 {
     if(!canContinute) return;
     nextButton.style.color = "lightgray";
+    correctButton.style.color = "black";
     canContinute = false;
     correctDiagram.innerHTML = "";
 
