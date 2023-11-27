@@ -39,7 +39,7 @@ class Confetti
     {
         this.x = canvas.width / 2;
         this.y = canvas.height;
-        this.velocity = Math.random() * 20 + 10;
+        this.velocity = Math.random() * 20 + 20;
 
         const direction = (Math.random() * 90 - 135) * deg2rad;
         this.vx = Math.cos(direction) * this.velocity;

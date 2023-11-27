@@ -14,6 +14,8 @@ body
     height: 100vh;
     width: 100vw;
     font-family: sans-serif;
+    position: fixed;
+    overflow-y: hidden;
 }
 
 canvas.box
@@ -54,7 +56,8 @@ canvas.box
 
 .range 
 {
-    width: 100vw;
+    width: calc(100vw - 8rem);
+    padding: 0rem 4rem;
     height: 100vh;
     display: flex;
     align-items: center;
@@ -75,10 +78,10 @@ span.font
 
 .start
 {
-    margin-left: 1rem;
+    color: black;
     background-color: none;
     border: none;
-    font-size: 1.3rem;
+    font-size: 1.5rem;
     cursor: pointer;
     background: none;
     border-bottom: 1px solid black;
@@ -116,8 +119,7 @@ main
 
 h1 
 {
-    color: white;
-    font-size: 2rem;
+    font-size: 2.5rem;
     color: #00a1fa;
 }
 
@@ -135,6 +137,7 @@ h3
 
 .footnote
 {
+    padding: 1rem 4rem;
     position: absolute;
     bottom: 2rem;
     font-size: 0.8rem;
