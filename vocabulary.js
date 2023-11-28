@@ -1,3 +1,10 @@
+/*
+    Dear WaniKani / Tofugu team
+
+    If you end up finding this data and want me to hide it, then I will make sure to lock the service behind owning a WaniKani account
+    Get in touch with me at: noel@nimstad.com
+*/
+
 const vocabulary = [
     {
         "character": "一",
