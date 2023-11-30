@@ -11,9 +11,10 @@
         <script src="vocabulary.js"></script>
         <link rel="stylesheet" href="styles.css"/>
 
+        <script src="prefrences.js" defer></script>
         <script src="kanjiCanvas.js" defer></script>
         <script src="referencePatterns.js" defer></script>
-        <script src="script.js" defer></script>
+        <script src="main.js" defer></script>
 
         <link rel="manifest" href="manifest.json">
 
@@ -23,9 +24,10 @@
         <main id="main">
             <p id="prompt" class="prompt">プロンプト</p>
             <section class="canvas">
-                <div>
+                <div class="canvasWrapper">
                     <canvas class="box" id="canvas" width="256" height="256"></canvas>
                     <div class="correctDiagram" id="correctDiagram" width="256" height="256"></div>
+                    <div class="canvasBackground"></div>
                 </div>
                 <section class="buttons">
                     <button id="correct" class="tools 正">正します</button>
@@ -38,18 +40,21 @@
         </main>
         <section class="range" id="config">
             <div class="wrapper">
-                <h2>漢字スタッド</h2>
-                <h3>ノエル・ニムスタッド</h3>
-                <h1>WaniKani®のレベルを選択します</h1>
+                <div class="title">
+                    <h2>漢字スタッド</h2>
+                    <h3>ノエル・ニムスタッド</h3>
+                </div>
+                <h1>レベルを選択します</h1>
                 <input class="slider" id="range" type="range" name="levels" min="1" max="60" step="1" value="10">
                 <p id="level">10つのワニカニのレベル</p>
                 <button id="start" class="start">始めます</button>
             </div>
             <section class="footnote">
                 <p><a href="https://www.paypal.com/donate/?hosted_button_id=SVTBMLVQAW8X6">Fund me a trip to Japan</a></p>
-                <p><a href="http://github.com/asdfjkl/kanjicanvas">Kanji Canvas kanji drawing & recognition system by Dominik Klein</a>・<a href="http://kanjivg.tagaini.net/">KanjiVG kanji SVGs by Ulrich Apel</a></p>
+                <p><a href="http://github.com/asdfjkl/kanjicanvas">Kanji Canvas kanji drawing & recognition system by Dominik Klein</a>・<a href="http://kanjivg.tagaini.net/">KanjiVG kanji SVGs by Ulrich Apel</a>・<a href="https://wanikani.com">Data & leveling system by WaniKani®</a></p>
             </section>
             <p class="score">v1.1.5</p>
+            <button id="darkMode" class="darkMode">🌙・ダーク</button>
         </section>
     </body>
 </html>

@@ -41,7 +41,7 @@ const promptLabel = document.getElementById("prompt");
 async function Prompt()
 {
     correctBool = false;
-    promptLabel.style.color = "black";
+    promptLabel.style.color = "var(--mainText)";
 
     KanjiCanvas.erase("canvas");
     currentItem = filteredVocabulary[Math.floor(Math.random() * filteredVocabulary.length)];
@@ -103,16 +103,16 @@ correctButton.addEventListener("click", () =>
     scoreLabel.innerHTML = `${ correct }/${ total } : ${ Math.round(correct / total * 100) }%`;
 
     canContinute = true;
-    nextButton.style.color = "black";
-    correctButton.style.color = "lightgray";
+    nextButton.style.color = "var(--mainText)";
+    correctButton.style.color = "var(--secondaryText)";
 });
 
 const nextButton = document.getElementById("next");
 nextButton.addEventListener("click", () => 
 {
     if(!canContinute) return;
-    nextButton.style.color = "lightgray";
-    correctButton.style.color = "black";
+    nextButton.style.color = "var(--secondaryText)";
+    correctButton.style.color = "var(--mainText)";
     canContinute = false;
     correctDiagram.innerHTML = "";
 

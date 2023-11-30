@@ -4,13 +4,20 @@
 */
 
 const path = "vocabulary.js";
-const key = process.env.KEY;
+let key = process.env.KEY;
 
-const headers =
+let headers;
+
+function GenerateHeaders()
 {
-    "WaniKani-Revision": "20170710",
-    Authorization: "Bearer " + key
-};
+    headers = 
+    {
+        "WaniKani-Revision": "20170710",
+        Authorization: "Bearer " + key
+    };
+}
+
+GenerateHeaders();
 
 const parameters = "?types=vocabulary"
 let base = "https://api.wanikani.com/v2/subjects" + parameters;
@@ -35,7 +42,7 @@ async function GetPage(url)
             reading: a.data.readings.map(b => 
             {
                 return b.reading
-            }).toString(),
+            }).toString().replace(/,/g, ", "),
             meaning: a.data.meanings.map(b => 
             {
                 return b.meaning
