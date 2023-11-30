@@ -27,9 +27,3 @@ Start over
 
 ### 次
 Next
-
-## Update v1.1.6
-- Data pool changes
-- Home screen relayout
-- Dark mode
-- Code cleanup
