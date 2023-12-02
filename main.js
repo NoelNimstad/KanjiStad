@@ -9,6 +9,7 @@ let total = 0; // ammount of kanji prompted
 let canContinute = false; // variable to prevent player from accidentaly skipping
 
 const configMenu = document.getElementById("config"); // "start" menu
+const titleLabel = document.getElementById("title"); // "startup" text
 const levelLabel = document.getElementById("level"); // ammount of levels selected
 const range = document.getElementById("range"); // levels selector
 const startButton = document.getElementById("start"); // start button
@@ -38,6 +39,7 @@ let currentCharacter = ""; // current kanji, in a string
 startButton.addEventListener("click", () => // if the start button is clicked
 {
     configMenu.style.display = "none"; // hide the "start" menu
+    titleLabel.style.display = "none"
     mainMenu.style.display = "block"; // show the "main" menu
 
     /* 

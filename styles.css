@@ -1,6 +1,6 @@
 /*
     Noel Nimstad
-    2023/11/26 : 2023/11/30
+    2023/11/26 : 2023/12/2
 */
 
 @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP&display=swap');
@@ -230,7 +230,7 @@ h3
 
     /* positioning */
     position: absolute;
-    bottom: 2rem;
+    bottom: 3rem;
 
     /* font */
     font-size: 0.8rem;
@@ -275,8 +275,74 @@ a
 
     /* font */
     font-size: 1.2rem;
-    writing-mode: vertical-rl;
 
     /* cursor */
     cursor: pointer;
+}
+
+/* STARTUP ANIMATION */
+.range 
+{
+    /* animation */
+    animation: StartUp-Range 1.5s ease;
+}
+
+.title 
+{
+    /* animation */
+    animation: StartUp-Title 1.5s ease;
+}   
+
+@keyframes StartUp-Range
+{
+    0%
+    {
+        /* opacity */
+        opacity: 0;
+    }
+
+    70%
+    {
+        /* opacity */
+        opacity: 0;
+    }
+
+    100%
+    {
+        /* opacity */
+        opacity: 1;
+    }
+}
+
+@keyframes StartUp-Title
+{
+    0%
+    {
+        /* visibility */
+        visibility: visible;
+
+        /* positioning */
+        top: 43vh;
+
+        /* font */
+        font-size: 1.75rem;
+
+        /* visibility */
+        visibility: visible;
+    }
+
+    60%
+    {
+        /* visibility */
+        visibility: visible;
+
+        /* positioning */
+        top: 43vh;
+
+        /* font */
+        font-size: 1.75rem;
+
+        /* visibility */
+        visibility: visible;
+    }
 }
