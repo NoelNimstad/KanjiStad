@@ -288,13 +288,13 @@ a
 .range 
 {
     /* animation */
-    animation: StartUp-Range 2s ease;
+    animation: StartUp-Range 3s ease;
 }
 
 .title 
 {
     /* animation */
-    animation: StartUp-Title 2s ease;
+    animation: StartUp-Title 3s ease;
 
     /* smoothing */
     will-change: top;
@@ -308,7 +308,7 @@ a
         opacity: 0;
     }
 
-    70%
+    80%
     {
         /* opacity */
         opacity: 0;
@@ -337,14 +337,14 @@ a
         opacity: 1;
     }
 
-    65%
+    75%
     {    
         font-size: 1.5rem;
         top: 45vh;
         opacity: 0;
     }
 
-    70%
+    80%
     {
         top: 2rem;
         font-size: initial;
