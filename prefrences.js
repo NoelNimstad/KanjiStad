@@ -1,9 +1,10 @@
 /*
     Noel Nimstad
-    2023/11/30 : 2023/11/30
+    2023/11/30 : 2023/12/2
 */
 
 const root = document.querySelector(":root"); // grab the root element
+const themeColorMetaTag = document.querySelector("meta[name=\"theme-color\"]");
 let darkMode = JSON.parse(localStorage.getItem("dark")); // convert the string -> bool
 
 const light = // light mode colors
@@ -30,6 +31,8 @@ function ApplyTheme() // function to apply the current theme
     {
         root.style.setProperty(`--${ key }`, value); // propogate the CSS variables
     }
+
+    themeColorMetaTag.setAttribute("content", targetStyle.background);
 }
 
 ApplyTheme(); // apply the theme upon launch

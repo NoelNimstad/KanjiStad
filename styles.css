@@ -251,12 +251,16 @@ a
     position: absolute;
     top: 2rem;
     left: 0;
+    z-index: -10000;
 
     /* font */
     text-align: center;
 
     /* sizing */
     width: 100vw;
+
+    /* opacity */
+    opacity: 1;
 }
 
 .darkMode 
@@ -284,13 +288,16 @@ a
 .range 
 {
     /* animation */
-    animation: StartUp-Range 1.5s ease;
+    animation: StartUp-Range 2s ease;
 }
 
 .title 
 {
     /* animation */
-    animation: StartUp-Title 1.5s ease;
+    animation: StartUp-Title 2s ease;
+
+    /* smoothing */
+    will-change: top;
 }   
 
 @keyframes StartUp-Range
@@ -318,31 +325,34 @@ a
 {
     0%
     {
-        /* visibility */
-        visibility: visible;
-
-        /* positioning */
-        top: 43vh;
-
-        /* font */
-        font-size: 1.75rem;
-
-        /* visibility */
-        visibility: visible;
+        font-size: 1.5rem;
+        top: 45vh;
+        opacity: 1;
     }
 
-    60%
+    25%
     {
-        /* visibility */
-        visibility: visible;
+        font-size: 1.5rem;
+        top: 45vh;
+        opacity: 1;
+    }
 
-        /* positioning */
-        top: 43vh;
+    65%
+    {    
+        font-size: 1.5rem;
+        top: 45vh;
+        opacity: 0;
+    }
 
-        /* font */
-        font-size: 1.75rem;
+    70%
+    {
+        top: 2rem;
+        font-size: initial;
+        opacity: 0;
+    }
 
-        /* visibility */
-        visibility: visible;
+    100%
+    {
+        opacity: 1;
     }
 }
