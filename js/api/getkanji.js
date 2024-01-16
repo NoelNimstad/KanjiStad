@@ -1,24 +1,16 @@
-/*
-    Noel Nimstad
-    2023/11/28 : 2023/11/30
-*/
-
-const path = "vocabulary.js"; // path to data export
-let key = process.env.KEY; // get WaniKani API key from environment variables
-
 let headers; // headers
 function GenerateHeaders() // generate headers function
 {
     headers = 
     {
-        "WaniKani-Revision": "20170710", // i don't know what this means
-        Authorization: "Bearer " + key // authorization making
+        "WaniKani-Revision": "20170710", // API version
+        Authorization: "Bearer " + localStorage.getItem("key") // authorization making
     };
 }
 
 GenerateHeaders(); // generate the headers
 
-const parameters = "?types=vocabulary" // we only want vocabulary in this case
+const parameters = "?types=kanji" // we only want vocabulary in this case
 let base = "https://api.wanikani.com/v2/subjects" + parameters; // generate a base URL
 
 let DATA = []; // data array to put pulled items in
@@ -37,11 +29,13 @@ async function GetPage(url) // function to get a target page of data
     data = data.map(a => // make the data usefull and concise
     {
         return {
-            character: a.data.characters, // grab the characters
-            reading: a.data.readings.map(b => // grab the readings 
+            kanji: a.data.characters, // grab the characters
+            readings: 
             {
-                return b.reading
-            }).toString().replace(/,/g, ", "), // convert it to a nice string
+                onyomi: a.data.readings.filter(b => b.type == "onyomi").map(c => c.reading), // get onyomi readings
+                kunyomi: a.data.readings.filter(b => b.type == "kunyomi").map(c => c.reading), // get kunyomi readings
+                nanori: a.data.readings.filter(b => b.type == "nanori").map(c => c.reading) // get nanori readings
+            },
             meaning: a.data.meanings.map(b => // grab the vocabulary meanings
             {
                 return b.meaning
@@ -55,8 +49,11 @@ async function GetPage(url) // function to get a target page of data
     return body.pages.next_url; // return the next page's url
 }
 
-async function Main() // main function
+async function GetKanji() // main function
 {
+    DATA = []; // clear data array
+    base = "https://api.wanikani.com/v2/subjects" + parameters; // generate a base URL
+
     const next = await GetPage(base); // call the GetPage function and wait for it to return a value
     if(next != null) // if there is a next page
     {
@@ -65,8 +62,5 @@ async function Main() // main function
     }
 
     DATA = DATA.sort((a, b) => a.level - b.level); // sort the DATA array by level
-    const out = Bun.file(path); // find the vocabulary.js file
-    await Bun.write(out, JSON.stringify(DATA)); // write the content to the file
+    localStorage.setItem("kanji", JSON.stringify(DATA));
 }
-
-Main(); // call the Main function

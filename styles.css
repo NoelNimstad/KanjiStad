@@ -1,358 +1,60 @@
-/*
-    Noel Nimstad
-    2023/11/26 : 2023/12/2
-*/
-
-@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP&display=swap');
-
-:root 
-{
-    --background: "#fff";
-    --wk: "#00a1fa";
-    --mainText: "#000";
-    --secondaryText: "#808080";
-}
-
 body 
 {
-    /* coloring */
-    background-color: var(--background);
-
-    /* positioning */
+    /* take up all available screen space */
     margin: 0;
-    position: fixed;
-
-    /* layout */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    /* sizing */
     height: 100vh;
-    width: 100vw;
-    overflow-y: hidden;
 
-    /* font */
+    /* set default font */
     font-family: sans-serif;
 }
 
-canvas.box
+section 
 {
-    /* background */
-    background: url("./box.svg");
-    background-size: cover;
-}
-
-.canvas 
-{
-    /* layout */
-    display: flex;
-    justify-content: center;
-}
-
-.canvas > div 
-{
-    /* positioning */
-    position: relative;
-}
-
-.buttons 
-{
-    /* layout */
-    display: flex;
-    flex-direction: column;
-    padding: 1rem;
-    gap: 0.5rem;
-}
-
-.tools
-{
-    /* coloring */
-    color: var(--mainText);
-    border: none;
-    background: none;
-
-    /* font */
-    font-weight: bolder;
-    font-size: 1.3rem;
-    text-align: left;
-
-    /* cursor */
-    cursor: pointer;
-}
-
-.range 
-{
-    /* sizing */
-    width: calc(100vw - 8rem);
-    padding: 0rem 4rem;
-    height: 100vh;
-
-    /* layout */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    /* font */
-    text-align: center;
-}
-
-.prompt 
-{
-    /* coloring */
-    color: var(--mainText);
-
-    /* font */
-    font-size: 2rem;
-    text-align: center;
-}
-
-span.font 
-{
-    /* font */
-    font-family: 'Noto Serif JP', serif;
-}
-
-.start
-{
-    /* coloring */
-    color: var(--mainText);
-    background: none;
-    border: none;
-    border-bottom: 1px solid var(--mainText);
-
-    /* font */
-    font-size: 1.5rem;
-
-    /* cursor */
-    cursor: pointer;
-}
-
-.score 
-{
-    /* coloring */
-    color: var(--mainText);
-
-    /* positioning */
-    position: absolute;
-    bottom: 1rem;
-    right: 2rem;
-}
-
-.correctDiagram
-{
-    /* positioning */
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: -10000;
-
-    /* sizing */
-    width: 256px;
-    height: 256px;
-
-    /* visibility */
-    opacity: 0.1;
-
-    /* misc */
-    user-select: none;
-}
-
-.correctDiagram > svg 
-{
-    /* sizing */
+    /* take up all available screen space */
     width: 100%;
     height: 100%;
-}
 
-.canvasBackground
-{
-    /* positioning */
+    /* ensure sections stay fixed in place */
     position: absolute;
     top: 0;
-    left: 0;
-    z-index: -10001;
+}
 
-    /* sizing */
-    width: 256px;
-    height: 256px;
+.login 
+{
+    background-color: #00a1fa;
 
-    /* coloring */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.panel
+{
     background-color: white;
+    padding: 3rem;
+    border: 1px solid black;
 }
 
-main 
+.panel > h1 
 {
-    /* visibility */
-    display: none;
+    margin: 0;
 }
 
-h1 
+.panel > input 
 {
-    /* coloring */
-    color: #00a1fa;
-
-    /* font */
-    font-size: 2.5rem;
-}
-
-p 
-{
-    /* coloring */
-    color: var(--mainText);
-}
-
-.slider
-{
-    /* sizing */
-    width: 90%;
-}
-
-h2 
-{
-    /* coloring */
-    color: var(--mainText);
-}
-
-h3 
-{
-    /* positioning */
-    margin-top: -1.5rem;
-
-    /* coloring */
-    color: var(--secondaryText);
-}
-
-.footnote
-{
-    /* sizing */
-    padding: 1rem 5rem;
-
-    /* positioning */
-    position: absolute;
-    bottom: 3rem;
-
-    /* font */
-    font-size: 0.8rem;
-
-    /* coloring */
-    color: var(--secondaryText);
-}
-
-a 
-{
-    /* coloring */
-    color: var(--wk);
-}
-
-.title
-{
-    /* positioning */
-    position: absolute;
-    top: 2rem;
-    left: 0;
-    z-index: -10000;
-
-    /* font */
+    margin: 1rem 0;
+    width: 100%;
     text-align: center;
-
-    /* sizing */
-    width: 100vw;
-
-    /* opacity */
-    opacity: 1;
 }
 
-.darkMode 
+.panel > button
 {
-    /* coloring */
-    color: var(--mainText);
-    background: none;
-
-    /* positioning */
-    position: absolute;
-    bottom: 2rem;
-    left: 2rem;
-
-    /* sizing */
-    border: none;
-
-    /* font */
-    font-size: 1.2rem;
-
-    /* cursor */
-    cursor: pointer;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
 }
 
-/* STARTUP ANIMATION */
-.range 
+.main
 {
-    /* animation */
-    animation: StartUp-Range 3s ease;
-}
-
-.title 
-{
-    /* animation */
-    animation: StartUp-Title 3s ease;
-
-    /* smoothing */
-    will-change: top;
-}   
-
-@keyframes StartUp-Range
-{
-    0%
-    {
-        /* opacity */
-        opacity: 0;
-    }
-
-    80%
-    {
-        /* opacity */
-        opacity: 0;
-    }
-
-    100%
-    {
-        /* opacity */
-        opacity: 1;
-    }
-}
-
-@keyframes StartUp-Title
-{
-    0%
-    {
-        font-size: 1.5rem;
-        top: 45vh;
-        opacity: 1;
-    }
-
-    25%
-    {
-        font-size: 1.5rem;
-        top: 45vh;
-        opacity: 1;
-    }
-
-    75%
-    {    
-        font-size: 1.5rem;
-        top: 45vh;
-        opacity: 0;
-    }
-
-    80%
-    {
-        top: 2rem;
-        font-size: initial;
-        opacity: 0;
-    }
-
-    100%
-    {
-        opacity: 1;
-    }
+    background-color: red;
 }
