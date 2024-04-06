@@ -1,60 +1,51 @@
 body 
 {
-    /* take up all available screen space */
     margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     height: 100vh;
-
-    /* set default font */
-    font-family: sans-serif;
 }
 
-section 
+#container 
 {
-    /* take up all available screen space */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+canvas 
+{
+    background-color: transparent;
+    border-radius: 2px;
+    z-index: 0; 
+}
+
+svg 
+{
+    position: absolute;
+    background-image: url("resources/box.svg");
+    background-size: cover;
+    z-index: -1;
+    box-sizing: border-box;
+}
+
+.progress-bar
+{
+    position: absolute;
+    bottom: 0;
+    height: 1rem;
+    width: 100vw;
+    background-color: black;
+    background-blend-mode: darken;
+    backdrop-filter: darken(50%);
+    box-sizing: border-box;
+}
+
+.progress 
+{
     width: 100%;
     height: 100%;
-
-    /* ensure sections stay fixed in place */
-    position: absolute;
-    top: 0;
-}
-
-.login 
-{
-    background-color: #00a1fa;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.panel
-{
-    background-color: white;
-    padding: 3rem;
-    border: 1px solid black;
-}
-
-.panel > h1 
-{
-    margin: 0;
-}
-
-.panel > input 
-{
-    margin: 1rem 0;
-    width: 100%;
-    text-align: center;
-}
-
-.panel > button
-{
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-.main
-{
-    background-color: red;
+    background-color: rgb(66, 220, 55);
+    transition: 1s ease;
 }

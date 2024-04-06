@@ -1,16 +1,23 @@
+<!DOCTYPE html>
 <html>
     <head>
-        <script src="js/utilities/navigator.js" defer></script>
-        <link rel="stylesheet" href="styles.css">
+        <title>オニカニ</title>
+        <script src="js/utilities/ref.js"></script>
+        <script src="js/canvas/canvas.js" defer></script>
+        <link rel="stylesheet" href="styles.css">  
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
     </head>
     <body>
-        <section class="login" id="login">
-            <div class="panel">
-                <h1>ワニカニのAPIトークンを入力しましてください</h1>
-                <input type="text" placeholder="ワニカニのAPIトークン" id="key">
-                <button id="loginButton">ログイン</button>
-            </div>
-        </section>
-        <section class="main" id="main"></section>
+        <div id="container">
+            <svg id="main-svg" xmlns="http://www.w3.org/2000/svg" width="109" height="109" viewBox="0 0 109 109">
+                <g id="kvg:StrokePaths_06728" style="fill:none;stroke:#000000;stroke-width:3;stroke-linecap:round;stroke-linejoin:round;">
+                    <g id="svg" kvg:element="木" kvg:radical="general">
+                    </g>
+                </g>
+            </svg>                           
+        </div>
+        <div class="progress-bar" id="progress-bar">
+            <div class="progress" id="progress"></div>
+        </div>
     </body>
 </html>
