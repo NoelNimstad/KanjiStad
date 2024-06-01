@@ -8,6 +8,7 @@ const svgParent = document.getElementById("main-svg");
 const canvas = document.createElement("canvas");
 const progressBar = document.getElementById("progress-bar");
 const progress = document.getElementById("progress");
+const livesLabel = document.getElementById("lives");
 svgParent.style.scale = SCALE;
 
 canvas.width = 109 * SCALE;
@@ -35,6 +36,9 @@ let lives = 5;
 let totalLives = 5;
 let red = 66;
 let green = 220;
+
+let ammountOfKanji = 0;
+let correctAmmountOfKanji = 0;
 
 function findPointsBasedOnFirstLetterOfTheEpicControlPointsOfAwsomenessByNoelAndAlexNimstadByDoingGoodEpicMath(points)
 {
@@ -95,7 +99,6 @@ function findPointsBasedOnFirstLetterOfTheEpicControlPointsOfAwsomenessByNoelAnd
         }
     }
 
-    console.log(pointsToReturn);
     return pointsToReturn;
 }
 
@@ -117,8 +120,16 @@ function grabPathDataFromSVGVeryCool(svgData, character)
         strokes.push(findPointsBasedOnFirstLetterOfTheEpicControlPointsOfAwsomenessByNoelAndAlexNimstadByDoingGoodEpicMath(points));
     }
     
-    lives = Math.floor(strokes.length / 2);
+    lives = Math.max(Math.floor(strokes.length / 2), 2);
     totalLives = lives;
+
+    livesLabel.innerText = lives + "ライフ";
+    
+    const mult = lives / totalLives;
+    progress.style.width = `${ mult * 100 }%`;
+    progress.style.backgroundColor = `rgb(${ mult * 275 }, ${ mult * 240 }, ${ mult * 150 })`;
+    progressBar.style.backgroundColor = `rgb(${ mult * 200 }, ${ mult * 200 }, ${ mult * 155 })`;
+    progressBar.style.borderTop = `1px solid rgb(${ mult * 200 }, ${ mult * 200 }, ${ mult * 155 })`;
 
     const data = 
     [
@@ -130,18 +141,6 @@ function grabPathDataFromSVGVeryCool(svgData, character)
     return data;
 }
 
-async function initialize() 
-{
-    const character = "略";
-    const response = await fetch(`https://kanjivg.tagaini.net/kanjivg/kanji/${character.charCodeAt(0).toString(16).padStart(5, "0")}.svg`);
-    const svgData = await response.text();
-    console.log(svgData);
-    data = grabPathDataFromSVGVeryCool(svgData, character);
-    strokes = svgData.match(/<path (.*)\/>/g);
-}
-
-initialize();
-
 canvas.addEventListener("mousedown", e => 
 {
     pointIndex = 0;
@@ -152,7 +151,13 @@ canvas.addEventListener("mousedown", e =>
 
 function handleYouHaveNoLivesLeftWhichMeantThatYouDieWhichIsEvenLessEpicThanLoosingDueToBadDrawingSkillsAndStuffBecauseThisTimeYouWontGetAnySecondChances()
 {
-    // do stuff
+    ammountOfKanji++;
+    updateTheLocalStorageForNewNews();
+
+    for(let i = strokeIndex; i < strokes.length; i++)
+    {
+        svgElement.innerHTML += strokes[i].replace("<path ", "<path style=\"stroke:red;\”");
+    }
 }
 
 function handleNotVeryEpicDrawingSkillsWhichProbablyLedToAFaliureDueToBadDrawingSkillsAndDefinetleyNotTheProgramItselfIPromise()
@@ -161,12 +166,14 @@ function handleNotVeryEpicDrawingSkillsWhichProbablyLedToAFaliureDueToBadDrawing
     {
         handleYouHaveNoLivesLeftWhichMeantThatYouDieWhichIsEvenLessEpicThanLoosingDueToBadDrawingSkillsAndStuffBecauseThisTimeYouWontGetAnySecondChances();
     }
+
+    livesLabel.innerText = lives + "ライフ";
     
-    progress.style.width = `${ (lives / totalLives) * 100 }%`;
-    red += 30 * 5 / totalLives;
-    green -= 30 * 5 / totalLives;
-    progress.style.backgroundColor = `rgb(${ red }, ${ green }, 55)`;
-    progressBar.style.backgroundColor = `rgb(${ red * 0.85 }, ${ green * 0.85 }, 40)`;
+    const mult = lives / totalLives;
+    progress.style.width = `${ mult * 100 }%`;
+    progress.style.backgroundColor = `rgb(${ mult * 275 }, ${ mult * 240 }, ${ mult * 150 })`;
+    progressBar.style.backgroundColor = `rgb(${ mult * 200 }, ${ mult * 200 }, ${ mult * 155 })`;
+    progressBar.style.borderTop = `1px solid rgb(${ mult * 200 }, ${ mult * 200 }, ${ mult * 155 })`;
 }
 
 canvas.addEventListener("mouseup", e => 
@@ -180,6 +187,10 @@ canvas.addEventListener("mouseup", e =>
     {
         strokeComplete = false;
         svgElement.innerHTML += strokes[strokeIndex++];
+        if(strokeIndex == strokes.length)
+        {
+            wowYouWinCongratulations();
+        }
     } else handleNotVeryEpicDrawingSkillsWhichProbablyLedToAFaliureDueToBadDrawingSkillsAndDefinetleyNotTheProgramItselfIPromise();
     context.clearRect(0, 0, canvas.width, canvas.height);
 });
@@ -218,4 +229,79 @@ canvas.addEventListener("mousemove", e =>
         x = currentX;
         y = currentY;
     }
+});
+
+if(!localStorage.getItem("user") || !localStorage.getItem("vocab"))
+{
+    window.location.href = "login.html";
+}
+
+const vocabulary = JSON.parse(localStorage.getItem("vocab"));
+let filteredVocabulary;
+let currentItem;
+let prompt;
+
+async function initialize() 
+{
+    const levels = parseInt(window.location.search.replace("?levels=", ""));
+    if(levels < 0 || levels > 60 || isNaN(levels))
+    {
+        window.location.href = "index.html";
+    }
+
+    filteredVocabulary = vocabulary.filter(vocab => { return vocab.level <= levels });
+
+    selectNewItemAndStart();
+}
+
+const promptLabel = document.getElementById("prompt");
+const meaningLabel = document.getElementById("meaning");
+async function selectNewItemAndStart()
+{
+    currentItem = filteredVocabulary[Math.floor(Math.random() * filteredVocabulary.length)];
+    prompt = currentItem.character;
+    let currentCharacter = currentItem.character.match(/[\u4e00-\u9faf]/g);
+    currentCharacter = currentCharacter[Math.floor(Math.random() * currentCharacter.length)];
+
+    promptLabel.innerHTML = prompt.replace(currentCharacter, "⚪︎") + "《" + currentItem.reading + "》";
+    meaningLabel.innerHTML = currentItem.meaning;
+
+    strokeIndex = 0;
+    svgElement.innerHTML = "";
+
+    const character = currentCharacter;
+    const response = await fetch(`https://kanjivg.tagaini.net/kanjivg/kanji/${character.charCodeAt(0).toString(16).padStart(5, "0")}.svg`);
+    const svgData = await response.text();
+    data = grabPathDataFromSVGVeryCool(svgData, character);
+    strokes = svgData.match(/<path (.*)\/>/g);
+}
+
+initialize();
+
+function wowYouWinCongratulations()
+{
+    Yipee();
+    ammountOfKanji++; correctAmmountOfKanji++;
+    updateTheLocalStorageForNewNews();
+}
+
+const nextButton = document.getElementById("next")
+nextButton.addEventListener("click", () => 
+{
+    selectNewItemAndStart();
+});
+
+function updateTheLocalStorageForNewNews()
+{
+    const now = new Date();
+    localStorage.setItem("kanji", ammountOfKanji);
+    localStorage.setItem("correct", correctAmmountOfKanji);
+    localStorage.setItem("time", Math.round(Math.abs((now.getTime() - then.getTime()) / 1000)));
+}
+
+const then = new Date();
+const home = document.getElementById("home");
+home.addEventListener("click", () => 
+{
+    window.location.href = "index.html?summary";
 });

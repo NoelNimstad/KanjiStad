@@ -1,0 +1,168 @@
+body 
+{
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    font-family: sans-serif;
+}
+
+#welcome
+{
+    position: absolute;
+    top: 0;
+    text-align: center;
+}
+
+#level 
+{
+    position: absolute;
+    bottom: 0;
+}
+
+#logout
+{
+    position: absolute;
+    bottom: 1rem;
+    right: 1rem;
+    background-color: black;
+    color: white;
+    padding: 0.3rem;
+    border: none;
+    border-radius: 0.3rem;
+    cursor: pointer;
+}
+
+#range 
+{
+    width: 13rem;
+}
+
+#levels 
+{
+    text-align: center;
+}
+
+#go 
+{
+    background-color: white;
+    color: #00aaff;
+    padding: 0.3rem;
+    border: none;
+    border-radius: 0.3rem;
+    cursor: pointer;
+    display: block;
+    margin-left: auto;
+    font-weight: bold;
+    margin-right: auto;
+    margin-bottom: 1rem;
+}
+
+#summary 
+{
+    position: absolute;
+    background-color: white;
+    width: 20rem;
+    padding-bottom: 2rem;
+    border: 1px solid lightgray;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+    border-radius: 0.3rem;
+    display: none;
+}
+
+#summary > h2
+{
+    text-align: center;
+}
+
+#summary > p 
+{
+    text-align: center;
+}
+
+#summary > p > b 
+{
+    color: rgb(255, 221, 26);
+}
+
+#close 
+{
+    background-color: black;
+    color: white;
+    border: none;
+    border-radius: 0.3rem;
+    padding: 0.3rem;
+    display: block;
+    margin-left: auto;
+    cursor: pointer;
+    margin-right: auto;
+}
+
+.levels 
+{
+    background: linear-gradient(#00aaff, #0093dd);
+    padding: 0.75rem;
+    border-radius: 0.5rem;
+    width: 300px;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+}
+
+.levels > img 
+{
+    max-width: 75%;
+    scale: 0.9;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#levels 
+{
+    color: white;
+}
+
+#range
+{
+    width: 90%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+main 
+{
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+}
+
+main > div 
+{
+    width: 400px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    height: fit-content;
+    row-gap: 1rem;
+}
+
+.banana 
+{
+    width: calc(300px - 1.5rem);
+    height: fit-content;
+    background-color: #434343;
+    color: white;
+    border-radius: 0.5rem;
+    padding-left: 1.5rem;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+}
+
+.sub 
+{
+    width: 400px;
+    margin: none;
+    margin-left: 3rem;
+    margin-top: 0;
+    margin-bottom: 0;
+}

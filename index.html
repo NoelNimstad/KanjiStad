@@ -1,23 +1,43 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>オニカニ</title>
-        <script src="js/utilities/ref.js"></script>
-        <script src="js/canvas/canvas.js" defer></script>
-        <link rel="stylesheet" href="styles.css">  
-        <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+        <script src="js/index.js" defer></script>
+        <link rel="stylesheet" href="css/index.css">
     </head>
     <body>
-        <div id="container">
-            <svg id="main-svg" xmlns="http://www.w3.org/2000/svg" width="109" height="109" viewBox="0 0 109 109">
-                <g id="kvg:StrokePaths_06728" style="fill:none;stroke:#000000;stroke-width:3;stroke-linecap:round;stroke-linejoin:round;">
-                    <g id="svg" kvg:element="木" kvg:radical="general">
-                    </g>
-                </g>
-            </svg>                           
+        <h2 id="welcome"></h2>
+        <main>
+            <div>
+                <div class="levels">
+                    <img src="resources/KanjiStadCat.png">
+                    <button id="go">スタート</button>
+                    <div>
+                        <input type="range" min="1" max="60" id="range">
+                        <div id="levels"></div>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <h2 class="sub">前回</h2>
+                <div class="banana">
+                    <h2>データ</h2>
+                    <p>時間: <span id="timeLast"><sup>n</sup>/<sub>a</sub></span></p>
+                    <p>単語: <span id="countLast"><sup>n</sup>/<sub>a</sub></span></p>
+                    <p>精度: <span id="accuracyLast"><sup>n</sup>/<sub>a</sub></span></p>
+                </div>
+                <div class="banana">
+                    <h2>ミス</h2>
+                    <p>工事中</p>
+                </div>
+            </div>
+        </main>
+        <div id="summary">
+            <h2>よくやったね！</h2>
+            <p>Accuracy <b id="percentage">50%</b> <span id="items">5/10</span></p>
+            <p>Time <b id="time">10s</b></p>
+            <button id="close">閉ジル</button>
         </div>
-        <div class="progress-bar" id="progress-bar">
-            <div class="progress" id="progress"></div>
-        </div>
+        <button id="logout">ログアウト</button>
+        <p id="level"></p>
     </body>
 </html>

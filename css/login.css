@@ -1,0 +1,108 @@
+body 
+{
+    margin: 0;
+    height: 100vh;
+    font-family: sans-serif;
+    display: flex;
+    overflow: hidden;
+}
+
+section.background
+{
+    width: 40vw;
+    height: 100vh;
+    background: url("../resources/grid.svg");
+}
+
+main 
+{
+    width: 60vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.title
+{
+    position: relative;
+    height: 5rem;
+}
+
+.se 
+{
+    position: absolute;
+    text-align: center;;
+    cursor: default;
+    font-size: 2rem;
+    transition: 0.5s linear;
+    transform: translateY(-1.1rem) rotateX(-90deg);
+    color: gray;
+    opacity: 0;
+}
+
+.jp
+{
+    position: absolute;
+    text-align: center;;
+    cursor: default;
+    font-size: 2rem;
+    transition: 0.5s linear;
+}
+
+.title:hover > .jp
+{
+    transform: translateY(1rem) rotateX(90deg);
+    opacity: 0;
+}
+
+.title > .jp > ruby > rt 
+{
+    transition: 0.5s;
+}
+
+.title:hover > .jp > ruby > rt 
+{
+    transform: translateY(0.5rem);
+    opacity: 0;
+}
+
+.title:hover > .se
+{
+    opacity: 1;
+    transform: translateY(-0.1rem) rotateX(0deg);
+}
+
+input 
+{
+    border: 1px solid black;
+    border-radius: 0.3rem;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    padding: 0.3rem;
+    outline: none;
+}
+
+button 
+{
+    border-radius: 0.3rem;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    border: 1px solid black;
+    border-left: none;
+    padding: 0.3rem;
+    background-color: black;
+    color: white;
+    cursor: pointer;
+}
+
+.credits 
+{
+    width: 90vw;
+    padding-left: 5vw;
+    padding-right: 5vw;
+    position: absolute;
+    bottom: 0;
+    text-align: center;
+    color: gray;
+}

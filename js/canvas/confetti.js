@@ -17,16 +17,18 @@ const colors = // possible confetti colors
     "#ff3bdb"
 ]
 
-const canvas = document.createElement("canvas"); // create a canvas for the confetti
-canvas.width = window.innerWidth; // make it fill the entire screen's width
-canvas.height = window.innerHeight; // make it fill the entire screen' heieght
-canvas.style.position = "absolute"; // position it absolutley (where ever i want)
-canvas.style.top = 0; // place it at the top of the screen
-canvas.style.left = 0; // place it at the very left of the screen to make sure it fills the whole screen
-canvas.style.zIndex = -100; // send it back in z-layers to make it non-interactible
+const confettiCanvas = document.createElement("canvas"); // create a confettiCanvas for the confetti
+confettiCanvas.width = window.innerWidth; // make it fill the entire screen's width
+confettiCanvas.height = window.innerHeight; // make it fill the entire screen' heieght
+confettiCanvas.style.position = "absolute"; // position it absolutley (where ever i want)
+confettiCanvas.style.top = 0; // place it at the top of the screen
+confettiCanvas.style.left = 0; // place it at the very left of the screen to make sure it fills the whole screen
+confettiCanvas.style.zIndex = 100; // send it back in z-layers to make it non-interactible
+confettiCanvas.style.pointerEvents = "none";
+confettiCanvas.style.imageRendering = "optimizeSpeed"
 
-document.body.append(canvas); // append the canvas to the document
-const context = canvas.getContext("2d"); // get the canvas context (drawing ability)
+document.body.append(confettiCanvas); // append the confettiCanvas to the document
+const confettiContext = confettiCanvas.getContext("2d"); // get the confettiCanvas confettiContext (drawing ability)
 
 const deg2rad = Math.PI / 180; // degress to radians constant
 const d360 = 2 * Math.PI; // 360 degrees in radians
@@ -37,8 +39,8 @@ class Confetti // confetti class for consice code
 {
     constructor() // on initialization
     {
-        this.x = canvas.width / 2; // make the confetti start at the middle of the screen
-        this.y = canvas.height; // and outside of screen view
+        this.x = confettiCanvas.width / 2; // make the confetti start at the middle of the screen
+        this.y = confettiCanvas.height; // and outside of screen view
         this.velocity = Math.random() * 20 + 20; // apply a random velocity to each confetti
 
         const direction = (Math.random() * 90 - 135) * deg2rad; // calculate a direction angle between -45 and 45 degrees
@@ -54,18 +56,18 @@ class Confetti // confetti class for consice code
         this.y += this.vy * this.velocity; // translate vertically by y velocity
         this.velocity -= drag; // decrease velocity by the drag constant
 
-        context.fillStyle = this.color; // set the canvas fill color to the confetti's color
-        context.beginPath(); // start drawing
-        context.arc(this.x, this.y, 5, 0, d360); // make a circle at target position
-        context.fill(); // fill the circle
+        confettiContext.fillStyle = this.color; // set the confettiCanvas fill color to the confetti's color
+        confettiContext.beginPath(); // start drawing
+        confettiContext.arc(this.x, this.y, 5, 0, d360); // make a circle at target position
+        confettiContext.fill(); // fill the circle
 
-        if(this.y > canvas.height + 5) // if the confetti is off screen
+        if(this.y > confettiCanvas.height + 5) // if the confetti is off screen
             confettiArray.splice(confettiArray.indexOf(this), 1); // delete self
     }
 }
 
 let confettiArray = []; // array for confetti
-const ammount = 100; // ammount of confetti to make each time
+const ammount = 50; // ammount of confetti to make each time
 function Yipee() // the confetti making function
 {
     for(let i = 0; i < ammount; i++) // make 100 unique confetties
@@ -78,7 +80,7 @@ function Yipee() // the confetti making function
 
 function Draw() // draw function
 {
-    context.clearRect(0, 0, canvas.width, canvas.height); // clear screen (to not leave confetti trails)
+    confettiContext.clearRect(0, 0, confettiCanvas.width, confettiCanvas.height); // clear screen (to not leave confetti trails)
 
     for(let i = 0; i < confettiArray.length; i++) // loop through each confetti
     {
@@ -91,6 +93,6 @@ function Draw() // draw function
 
 window.addEventListener("resize", () => // if the window is resized
 {
-    canvas.width = window.innerWidth; // then resize the canvas width as well
-    canvas.height = window.innerHeight; // and the canvas height
+    confettiCanvas.width = window.innerWidth; // then resize the confettiCanvas width as well
+    confettiCanvas.height = window.innerHeight; // and the confettiCanvas height
 });
