@@ -5,6 +5,7 @@ body
     justify-content: center;
     padding-top: 5rem;
     height: 100vh;
+    overflow: hidden;
     font-family: sans-serif;
     background-color: #eee;
     background-image: url("https://assets.wanikani.com/assets/default-v2/bg-texture-f915951af4e4baa78c241cff9ae477176056f54f669ff024c261eb1b08eb31e5.png");
