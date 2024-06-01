@@ -9,25 +9,32 @@
         <main>
             <div>
                 <div class="levels">
-                    <img src="resources/KanjiStadCat.png">
-                    <button id="go">スタート</button>
+                    <div class="flex">
+                        <div>
+                            <h2>書く</h2>
+                            <p>Write kanji from vocab based on WaniKani™ levels</p>
+                        </div>
+                        <img src="resources/KanjiStadCat.png">
+                    </div>
                     <div>
                         <input type="range" min="1" max="60" id="range">
                         <div id="levels"></div>
                     </div>
+                    <button id="go">スタート</button>
                 </div>
             </div>
             <div>
-                <h2 class="sub">前回</h2>
-                <div class="banana">
-                    <h2>データ</h2>
-                    <p>時間: <span id="timeLast"><sup>n</sup>/<sub>a</sub></span></p>
-                    <p>単語: <span id="countLast"><sup>n</sup>/<sub>a</sub></span></p>
-                    <p>精度: <span id="accuracyLast"><sup>n</sup>/<sub>a</sub></span></p>
-                </div>
-                <div class="banana">
-                    <h2>ミス</h2>
-                    <p>工事中</p>
+                <div class="banana_container">
+                    <div class="banana">
+                        <h2>前回のデータ</h2>
+                        <p>時間: <span id="timeLast"><sup>n</sup>/<sub>a</sub></span></p>
+                        <p>単語: <span id="countLast"><sup>n</sup>/<sub>a</sub></span></p>
+                        <p>精度: <span id="accuracyLast"><sup>n</sup>/<sub>a</sub></span></p>
+                    </div>
+                    <div class="banana">
+                        <h2>ミス</h2>
+                        <p>工事中</p>
+                    </div>
                 </div>
             </div>
         </main>
