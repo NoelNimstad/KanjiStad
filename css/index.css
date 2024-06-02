@@ -11,11 +11,34 @@ body
     background-image: url("https://assets.wanikani.com/assets/default-v2/bg-texture-f915951af4e4baa78c241cff9ae477176056f54f669ff024c261eb1b08eb31e5.png");
 }
 
-#welcome
+.top 
 {
-    position: absolute;
+    width: 100vw;
+    height: 4rem;
+    position: fixed;
     top: 0;
-    text-align: center;
+    background-color: #fafafa;
+    border-bottom: 1px solid #d5d5d5;
+    box-shadow: 0 1px 10px rgba(0, 0, 0, 0.05);
+    display: flex;
+    justify-content: center;
+}
+
+.top-container
+{
+    width: 750px;
+    height: 4rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.pfp 
+{
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 50%;
+    border: 1px solid #d5d5d5;
 }
 
 #level 
@@ -147,6 +170,7 @@ body
 
 main 
 {
+    margin-top: 1rem;
     width: 100vw;
     display: flex;
     justify-content: center;
