@@ -263,8 +263,7 @@ async function selectNewItemAndStart()
     let currentCharacter = currentItem.character.match(/[\u4e00-\u9faf]/g);
     currentCharacter = currentCharacter[Math.floor(Math.random() * currentCharacter.length)];
 
-    promptLabel.innerHTML = prompt.replace(currentCharacter, "⚪︎") + "《" + currentItem.reading + "》";
-    meaningLabel.innerHTML = currentItem.meaning;
+    promptLabel.innerHTML = prompt.replace(currentCharacter, "⚪︎") + "<br/><span class=\"smol\">《" + currentItem.reading + "》<br/><span class=\"eigo\">" + currentItem.meaning + "</span></span>";
 
     strokeIndex = 0;
     svgElement.innerHTML = "";
