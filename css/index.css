@@ -5,7 +5,6 @@ body
     justify-content: center;
     padding-top: 5rem;
     height: 100vh;
-    overflow: hidden;
     font-family: sans-serif;
     background-color: #eee;
     background-image: url("https://assets.wanikani.com/assets/default-v2/bg-texture-f915951af4e4baa78c241cff9ae477176056f54f669ff024c261eb1b08eb31e5.png");
@@ -22,10 +21,12 @@ body
     box-shadow: 0 1px 10px rgba(0, 0, 0, 0.05);
     display: flex;
     justify-content: center;
+    z-index: 100;
 }
 
 .top-container
 {
+    padding: 0rem 1rem;
     width: 750px;
     height: 4rem;
     display: flex;
@@ -238,4 +239,65 @@ main > div
     font-weight: 500;
     margin-bottom: -1rem;
     font-size: 24px;
+}
+
+@media (max-width: 820px) 
+{
+    main 
+    {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    main > div 
+    {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+
+    .levels 
+    {
+        width: 300px;
+    }
+
+    #welcome 
+    {
+        font-size: 1rem;
+    }
+
+    .banana_container
+    {
+        width: 300px;
+        padding: 0.75rem;
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+    }
+
+    .banana
+    {
+        width: calc(300px - 1.5rem) !important;
+    }
+
+    body 
+    {
+        display: block;
+    }
+
+    #logout
+    {
+        position: static;
+        padding: 0.5rem 1rem;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        bottom: 0;
+    }
+
+    #level 
+    {
+        position: relative;
+        text-align: center;
+    }
 }

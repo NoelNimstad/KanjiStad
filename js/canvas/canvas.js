@@ -149,6 +149,40 @@ canvas.addEventListener("mousedown", e =>
     y = (e.clientY - yOffset);
 });
 
+canvas.addEventListener("touchstart", e => 
+{
+    let touch = e.touches[0];
+    let mouseEvent = new MouseEvent("mousedown",
+    {
+        clientX: touch.clientX,
+        clientY: touch.clientY
+    });
+    canvas.dispatchEvent(mouseEvent);
+});
+
+canvas.addEventListener("touchmove", e =>
+{
+    let touch = e.touches[0];
+    let mouseEvent = new MouseEvent("mousemove", 
+    {
+        clientX: touch.clientX,
+        clientY: touch.clientY
+    });
+    canvas.dispatchEvent(mouseEvent);
+});
+
+canvas.addEventListener("touchend", e => 
+{
+    console.log(e);
+    let touch = e.changedTouches[0];
+    let mouseEvent = new MouseEvent("mouseup",
+    {
+        clientX: touch.clientX,
+        clientY: touch.clientY
+    });
+    canvas.dispatchEvent(mouseEvent);
+});
+
 function handleYouHaveNoLivesLeftWhichMeantThatYouDieWhichIsEvenLessEpicThanLoosingDueToBadDrawingSkillsAndStuffBecauseThisTimeYouWontGetAnySecondChances()
 {
     ammountOfKanji++;
